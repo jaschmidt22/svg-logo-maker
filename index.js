@@ -53,9 +53,6 @@ async function main() {
       return;
   }
 
-  // Generate the SVG string for the shape
-  // const svgString = shape.render();
-
   // Generate the SVG string for the shape with the specified dimensions
 
   const svgString = `<svg xmlns="http://www.w3.org/2000/svg" width="${svgWidth}" height="${svgHeight}">
