@@ -1,12 +1,9 @@
 const inquirer = require("inquirer");
 const fs = require("fs");
-//const Triangle = require("./lib/Triangle");
-//const Circle = require("./lib/Circle");
-//const Square = require("./lib/Square");
-const { Circle, Square, Triangle } = require("./lib/shape");
+const { Circle, Square, Triangle } = require("./lib/shape"); //import shape file
 
 async function main() {
-  // prompt users for input (color, shape, text)
+  //prompt users for color, shape and text)
   const userInput = await inquirer.prompt([
     {
       type: "input",
@@ -32,11 +29,11 @@ async function main() {
     },
   ]);
 
-  // Set the desired dimensions of the SVG
+  //set height and width of SVG
   const svgWidth = 300;
   const svgHeight = 200;
 
-  // Based on user input, create the desired shape (Triangle, Circle, or Square)
+  //based on user input -- create the desired shape (triangle, circle or square)
   let shape;
   switch (userInput.shape) {
     case "Triangle":
@@ -53,7 +50,7 @@ async function main() {
       return;
   }
 
-  // Generate the SVG string for the shape with the specified dimensions
+  //create the SVG string for the shape with the specified dimensions
 
   const svgString = `<svg xmlns="http://www.w3.org/2000/svg" width="${svgWidth}" height="${svgHeight}">
     ${shape.render()} <!-- Render the chosen shape -->
@@ -62,7 +59,7 @@ async function main() {
     }">${userInput.text}</text> <!-- Add text -->
   </svg>`;
 
-  // Save the SVG string to a file
+  //save SVG string to a file
   fs.writeFileSync("logo.svg", svgString, "utf-8");
   console.log("Logo saved as logo.svg");
 }
